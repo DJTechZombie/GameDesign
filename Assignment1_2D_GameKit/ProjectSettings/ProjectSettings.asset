@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 00000000000000000000000000000000
+  productGUID: 2f65275db1bf39f4e80cc8766e47b5bf
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -724,7 +724,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
   cloudProjectId: 832e65e2-1644-4b54-a118-8c4b9aa609eb
-  projectName: Platformer-2D
+  projectName: Assignment1_2D_GameKit
   organizationId: djtechzombie
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
