@@ -4,7 +4,7 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: TilemapRock
   m_Shader: {fileID: 4800000, guid: b67e051d20f5e98469ac774ffb360da5, type: 3}
