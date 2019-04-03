@@ -19,25 +19,29 @@ public class LapTimeManager : MonoBehaviour
     public Text lapTime;
     public Text bestTime;
 
+    public bool isCounting = false;
+
     // Update is called once per frame
     void Update()
     {
-        MilliCount += Time.deltaTime * 10;
-        laptimeTotal += Time.deltaTime;
-
-        if(MilliCount >= 10)
+        if (isCounting)
         {
-            MilliCount = 0;
-            SecondCount ++;
-        }
-        if(SecondCount >=60)
-        {
-            SecondCount = 0;
-            MinuteCount ++;
-        }
+            MilliCount += Time.deltaTime * 10;
+            laptimeTotal += Time.deltaTime;
 
-        lapTime.text = MinuteCount.ToString("00")+":"+SecondCount.ToString("00")+"."+MilliCount.ToString("0");
+            if (MilliCount >= 10)
+            {
+                MilliCount = 0;
+                SecondCount++;
+            }
+            if (SecondCount >= 60)
+            {
+                SecondCount = 0;
+                MinuteCount++;
+            }
 
+            lapTime.text = MinuteCount.ToString("00") + ":" + SecondCount.ToString("00") + "." + MilliCount.ToString("0");
+        }
     }
 
     public void ResetLapTime()
