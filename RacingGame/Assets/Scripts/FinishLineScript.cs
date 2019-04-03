@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class FinishLineScript : MonoBehaviour
 {
     public GameObject LapCompleteteTrig;
-    public GameObject HalfLapTrig;
 
     //public GameObject LapTimeBox;
 
@@ -14,9 +13,11 @@ public class FinishLineScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.tag == "Player")
+        { 
         LapCompleteteTrig.SetActive(false);
-        HalfLapTrig.SetActive(true);
         lapTime.ResetLapTime();
+        }
     }
 }
 
