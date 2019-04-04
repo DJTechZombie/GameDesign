@@ -6,8 +6,8 @@ public class aiWaypoints : MonoBehaviour
 {
     public GameObject[] waypoints;
     public GameObject waypointTracker;
-    [SerializeField]
-    private int currentWaypoint;
+    
+    public int currentWaypoint;
 
     // Update is called once per frame
     void Update()

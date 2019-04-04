@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class FinishLineScript : MonoBehaviour
 {
     public GameObject LapCompleteteTrig;
+    public GameObject LapCompleteCam;
+    
 
     //public GameObject LapTimeBox;
 
@@ -17,6 +19,12 @@ public class FinishLineScript : MonoBehaviour
         { 
         LapCompleteteTrig.SetActive(false);
         lapTime.ResetLapTime();
+        }
+
+        if(lapTime.currentLap == 4)
+        {
+            LapCompleteCam.SetActive(true);
+
         }
     }
 }
