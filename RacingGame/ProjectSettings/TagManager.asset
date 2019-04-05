@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CarTracker
   - AIcar
+  - PositionMarkers
   layers:
   - Default
   - TransparentFX
