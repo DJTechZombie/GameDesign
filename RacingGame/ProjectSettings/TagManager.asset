@@ -7,6 +7,12 @@ TagManager:
   - CarTracker
   - AIcar
   - PositionMarkers
+  - aiTarget_LeftLane
+  - aiTarget_MidLane
+  - aiTarget_RightLane
+  - SpawnLeft
+  - SpawnRight
+  - SpawnMid
   layers:
   - Default
   - TransparentFX
