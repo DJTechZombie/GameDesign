@@ -27,7 +27,7 @@ public class CarSpawner : MonoBehaviour
 //            Debug.Log("Spawning");
             carPooler.instance.SpawnFromPool("cars", transform.position, Quaternion.Euler(0,180f,0),spawnLane);
             spawnTime = 0;
-            spawnDelay = Random.Range(2, 10);
+            spawnDelay = Random.Range(5, 10);
         }
     }
 

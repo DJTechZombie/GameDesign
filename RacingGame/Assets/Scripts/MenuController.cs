@@ -13,7 +13,17 @@ public class MenuController : MonoBehaviour
         StartCoroutine(loadAsync(1));
     }
 
-   IEnumerator loadAsync(int sceneIndex)
+    public void LoadPursuit()
+    {
+        StartCoroutine(loadAsync(2));
+    }
+
+    public void LoadCarSelect ()
+    {
+        StartCoroutine(loadAsync(3));
+    }
+
+    IEnumerator loadAsync(int sceneIndex)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 

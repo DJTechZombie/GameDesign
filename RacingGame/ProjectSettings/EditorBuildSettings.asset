@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestTrack.unity
     guid: 76c6389c62c781541a910fb8dd357d07
+  - enabled: 1
+    path: Assets/Scenes/PursuitTrack.unity
+    guid: 14ee56227cbf9904198d777c378f6f58
+  - enabled: 1
+    path: Assets/Scenes/ChooseCar.unity
+    guid: e13b3836bccf0b54f9ec750997951f5d
   m_configObjects: {}

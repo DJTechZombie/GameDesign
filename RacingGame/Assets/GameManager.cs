@@ -42,4 +42,11 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(0).name);
+        
+    }
+
 }

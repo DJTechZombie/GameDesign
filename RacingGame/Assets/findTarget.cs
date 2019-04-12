@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Vehicles.Car;
+using UnityStandardAssets.Utility;
 using UnityEngine.AI;
 
 public class findTarget : MonoBehaviour, IPooledObject
 {
     private CarAIControl aiControl;
     public GameObject target;
-    public NavMeshAgent agent;
-    public AiCarScript aiCarScript;
+    public WaypointProgressTracker aiCarScript;
 
     public string m_SpawnLane;
     // Start is called before the first frame update
@@ -29,12 +29,12 @@ public class findTarget : MonoBehaviour, IPooledObject
         }
         aiControl = GetComponent<CarAIControl>();
         target = GameObject.FindGameObjectWithTag(m_SpawnLane);
-        aiCarScript = agent.GetComponent<AiCarScript>();
+        aiCarScript = GetComponent<WaypointProgressTracker>();
         if(aiCarScript == null)
         {
             Debug.Log("AI Script NOT Found");
         }
-        aiCarScript.agentDesitnation = target;
+        aiCarScript.circuit = target.GetComponent<WaypointCircuit>();
         //aiControl.m_Target = target.transform;
     }
 }
