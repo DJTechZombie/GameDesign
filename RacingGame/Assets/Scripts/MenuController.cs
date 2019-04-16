@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     public GameObject loadScreen;
+    public GameObject TrackScreen;
     public Slider loadSlider;
 
     public void LoadNextLevel()
@@ -23,11 +24,17 @@ public class MenuController : MonoBehaviour
         StartCoroutine(loadAsync(3));
     }
 
+    public void LoadCityTrack()
+    {
+        StartCoroutine(loadAsync(4));
+    }
+
     IEnumerator loadAsync(int sceneIndex)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
         loadScreen.SetActive(true);
+        TrackScreen.SetActive(false);
 
         while (!operation.isDone)
         {
