@@ -6,7 +6,8 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody rb;
     public float speed = 10f;
-    public float bulletForce = 1000;
+    public float bulletForce = 1500;
+    public int strength = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,8 @@ public class Bullet : MonoBehaviour
             direction.Normalize();
             direction.y = 0;
             other.GetComponent<Rigidbody>().AddForce(direction * bulletForce);
-            Destroy(other.gameObject, 2f);
+            //Destroy(other.gameObject, 2f);
+            other.GetComponent<EnemyControl>().TakeDamage(strength);
         }
     }
 }
