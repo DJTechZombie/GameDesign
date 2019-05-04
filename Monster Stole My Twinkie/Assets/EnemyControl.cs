@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
-public class EnemyControl : MonoBehaviour
+public class Waypoints
 {
+    public Transform pos { get; set; }
+
+}
+    public class EnemyControl : MonoBehaviour
+    {
     private NavMeshAgent agent;
     private Animator anim;
-    public Transform navPoint;
+    [SerializeField]
+    private string NavPointName;
+    private Waypoints navPoint;
+    private Waypoints lastWaypoint;
 
     [SerializeField]
     private int health = 1;
@@ -17,26 +26,31 @@ public class EnemyControl : MonoBehaviour
     [SerializeField]
     private float AttackRange = 1f;
 
-    // Start is called before the first frame update
-    void Start()
+    public static List<Waypoints> waypoints = new List<Waypoints>();
+
+    private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(navPoint.position);
         anim = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        FindNearestWaypoint();
+    }
+
     void Update()
     {
-        agent.SetDestination(navPoint.position);
-        if((transform.position - navPoint.position).magnitude <= AttackRange)
+        agent.SetDestination(navPoint.pos.position);
+        if (agent.remainingDistance > agent.stoppingDistance)
         {
-            Attack();
+            anim.SetFloat("Speed", (transform.position - navPoint.pos.position).normalized.magnitude);
         }
         else
         {
-            anim.SetBool("isAttacking", false);
-            anim.SetFloat("Speed", 1f);
+            lastWaypoint = navPoint;
+            Debug.Log(name + ": Target Reached");
+            FindNearestWaypoint();
         }
     }
 
@@ -55,9 +69,30 @@ public class EnemyControl : MonoBehaviour
         else
         {
             anim.SetTrigger("Die");
-            Destroy(gameObject,2f);
+            Destroy(gameObject, 3f);
         }
-        
     }
-    
+
+    public static void AddWaypoint(Transform t)
+    {
+            waypoints.Add(new Waypoints() { pos = t });
+    }
+
+    private void FindNearestWaypoint()
+    {
+        float distToClosestWP = Mathf.Infinity;
+        foreach(Waypoints wp in waypoints)
+        {
+            if (navPoint == null || wp != lastWaypoint)
+            {
+                float distToWP = (wp.pos.position - transform.position).sqrMagnitude;
+                if (distToWP < distToClosestWP)
+                {
+                    distToClosestWP = distToWP;
+                    navPoint = wp;
+                    NavPointName = navPoint.pos.gameObject.name;
+                }
+            }
+        }
+    }
 }
